@@ -10,6 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class UserRegistrationComponent implements OnInit {
   form!: FormGroup;
 
+  title = 'Resgister - User'
+
   private _http = inject(HttpClient);
 
   ngOnInit(): void {
