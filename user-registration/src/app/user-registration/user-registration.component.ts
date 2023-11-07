@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-user-registration',
@@ -25,6 +26,8 @@ export class UserRegistrationComponent implements OnInit {
 
     if (this.title) {
       console.log('tem title');
+    } else {
+      console.log('sem title');
     }
   }
 
@@ -32,6 +35,7 @@ export class UserRegistrationComponent implements OnInit {
     if (this.form.valid) {
       this._http
         .post('http://httpbin.org/post', JSON.stringify(this.form.value))
+        .pipe(take(1))
         .subscribe((dados) => console.log(dados));
     } else {
       console.log('error');
