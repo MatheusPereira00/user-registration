@@ -22,6 +22,10 @@ export class UserRegistrationComponent implements OnInit {
       firstName: new FormControl(''),
       lastName: new FormControl(''),
     });
+
+    if (this.title) {
+      console.log('tem title');
+    }
   }
 
   onSubmit() {
