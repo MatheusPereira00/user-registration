@@ -10,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class UserRegistrationComponent implements OnInit {
   form!: FormGroup;
 
-  title = 'Resgister - User'
+  title = 'Resgister - User';
 
   private _http = inject(HttpClient);
 
@@ -25,8 +25,12 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    this._http
-      .post('http://httpbin.org/post', JSON.stringify(this.form.value))
-      .subscribe(dados => console.log(dados));
+    if (this.form.valid) {
+      this._http
+        .post('http://httpbin.org/post', JSON.stringify(this.form.value))
+        .subscribe((dados) => console.log(dados));
+    } else {
+      console.log('error');
+    }
   }
 }
